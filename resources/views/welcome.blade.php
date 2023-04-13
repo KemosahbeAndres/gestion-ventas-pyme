@@ -22,5 +22,6 @@
     </head>
     <body class="antialiased">
         <h1>Sitio en desarrollo Ignacio!!</h1>
+        <h2>Vale Andres, Entendido!! </h2>
     </body>
 </html>
