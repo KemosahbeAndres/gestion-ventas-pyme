@@ -16,7 +16,7 @@ use App\Http\Controllers\LoginController;
 
 Route::redirect('/', '/login');
 
-Route::get('dashboard', [LoginController::class, 'dashboard']);
+Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('custom-login', [LoginController::class, 'login'])->name('login.custom');
 Route::get('register', [LoginController::class, 'registration'])->name('register');
