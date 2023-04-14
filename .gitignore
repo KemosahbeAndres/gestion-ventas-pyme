@@ -5,6 +5,7 @@
 /vendor
 .env.backup
 .env
+.env.local
 .phpunit.result.cache
 docker-compose.override.yml
 Homestead.json
@@ -12,10 +13,10 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 /.idea
-/.vscode
 /package-lock.json
 /php_errorlog
 /priv-key.ppk
 /private-key.ppk
 /pub-key.txt
 /public-key
+.DS_Store
