@@ -23,5 +23,7 @@
     <body class="antialiased">
         <h1>Sitio en desarrollo Ignacio!!</h1>
         <h2>Vale Andres, Entendido!! </h2>
+        <input type="button" value="Click" class="form-control">
+        
     </body>
 </html>
