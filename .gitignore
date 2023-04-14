@@ -14,6 +14,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /package-lock.json
+/pnpm-lock.yaml
 /php_errorlog
 /priv-key.ppk
 /private-key.ppk
