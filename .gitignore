@@ -20,3 +20,4 @@ yarn-error.log
 /private-key.ppk
 /pub-key.txt
 /public-key
+.DS_Store
