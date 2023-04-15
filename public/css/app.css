@@ -2,10 +2,6 @@ body, p, h1, h2, h3, h4, h5 {
     font-family: 'Nunito', sans-serif !important;
 }
 
-body {
-    background-color: red;
-}
-
 .logout {
     background-color: var(--bs-dark) !important;
     color: white !important;
