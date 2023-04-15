@@ -8,7 +8,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse mt-md-2 mt-lg-0" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" :class="{active:enVentas}" @click="aVentas()">Ventas</a>
@@ -24,7 +24,17 @@
         @verbatim
         <div class="container-fluid my-4">
             <div id="ventas" v-show="enVentas">
-                <h1>En Ventas</h1>
+                <h2 class="text-center">Ventas</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur assumenda delectus dicta dignissimos eaque ipsam ipsum, mollitia natus nobis, odit perspiciatis provident qui quibusdam sunt vero. Aliquam facilis iste voluptatum?</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eligendi error exercitationem incidunt laboriosam laudantium molestiae nesciunt nihil quaerat vero. Aperiam earum, excepturi nostrum nulla quasi repudiandae sed temporibus veritatis?</p>
+                    </div>
+                </div>
             </div>
             <div id="live" v-show="enVivo">
                 <h1>En Vivo</h1>

@@ -25,7 +25,7 @@ class LoginController extends Controller
 
         $credentials = $request->only('email', 'password');
 
-        if(Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             return redirect()->intended('dashboard')->with('success', 'Signed in');
         }
         return redirect('login')->withErrors('Error', 'login');
@@ -35,11 +35,11 @@ class LoginController extends Controller
         return view('auth.registration');
     }
 
-    public function customRegistration(Request $request) {
-        $request->validateWithBag('login',[
+    public function customRegistration (Request $request) {
+        $request->validateWithBag('login', [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' =>'required|min:6'
+            'password' => 'required|min:6'
         ]);
         $data = $request->all();
         $check = $this->create($data);
