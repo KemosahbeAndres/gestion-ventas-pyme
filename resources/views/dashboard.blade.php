@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <div id="app" class="main-content">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
@@ -18,7 +17,8 @@
                         </li>
                     </ul>
                 </div>
-                <a class="btn btn-light" href="{{route('logout')}}">Cerrar Sesion</a>
+
+                <a @click="logout()" class="btn btn-light">Cerrar Sesion</a>
             </div>
         </nav>
         @verbatim
@@ -34,8 +34,14 @@
     </div>
 
     <script>
-        new Vue({
+
+        let app = new Vue({
             el: '#app',
+            created: function () {
+                if(!this.validToken()) {
+                    this.toLogin()
+                }
+            },
             data: {
                 enVentas: true,
                 enVivo: false
@@ -48,6 +54,41 @@
                 aVivo: function () {
                     this.enVentas = false
                     this.enVivo = true
+                },
+                logout: function() {
+                    if(!this.validToken()) {
+                        return false;
+                    }
+                    const csrf = document.getElementsByTagName('meta')['csrf-token'].content
+                    //axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf
+                    axios.head('/api/sanctum/csrf-cookie').then(
+                        function (cookie) {
+                            //axios.defaults.headers.common['Authentication'] = 'Bearer '+ token;
+                            axios.get(
+                                '/api/logout',
+                            ).then(function (response) {
+                                if(response.data.done) {
+                                    localStorage.clear()
+                                    app.toLogin()
+                                }
+                                //localStorage.clear()
+                                //app.toLogin()
+                            }).catch(error => console.error(error))
+                        }
+                    )
+
+                },
+                toLogin: function () {
+                    window.location.href = window.location.origin + "/login"
+                },
+                validToken: function (){
+                    let token = localStorage.getItem('access_token')
+                    if (token == null) {
+                        return false;
+                    }
+                    axios.defaults.headers.common['Authentication'] = 'Bearer '+ token;
+                    axios.defaults.headers.common['Authorization'] = 'Bearer '+ token;
+                    return true;
                 }
             }
         })

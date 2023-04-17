@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\APIAuthController;
+use App\Http\Controllers\ConsultUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('/register', [APIAuthController::class, 'register'])->name('api.register');
+Route::post('/login', [APIAuthController::class, 'login'])->name('api.login');
+
+
+Route::middleware('auth.api')->group( function() {
+    Route::get('/logout', [APIAuthController::class, 'logout']);
+    Route::get('/user/me', [ConsultUserController::class, 'consult']);
 });
+
+
